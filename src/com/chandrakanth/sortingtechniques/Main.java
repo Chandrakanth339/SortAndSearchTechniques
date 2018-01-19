@@ -102,7 +102,7 @@ public class Main {
 
 	private static final void printValues(final int[] a, final int l, final String type) {
 		int size = -1;
-		while (++size < l) {
+		while (++size < l) {   
 			System.out.print((size == 0 ? type + "\t" : "") + a[size] + ((size < l - 1) ? "," : "\n"));
 		}
 	}
