@@ -6,8 +6,44 @@ public class Main {
 
 		final int[] arr = getData();
 		final int l = arr.length;
-		getSortedDataByBubbleSort(l, arr, "BubbleSort");
-		getSorteddataByQuickSort(l, getData(), "QuickSort");
+		// getSortedDataByBubbleSort(l, arr, "BubbleSort");
+		// getSorteddataByQuickSort(l, getData(), "QuickSort");
+		// getSortedDataByMergeSort(l, getData(), "MergeSort");
+
+		getSortedDataBySelectionSort(l, getData(), "SelectionSort");
+		// getSortedDataByInsertionSort(l, getData(), "InsertionSort");
+
+	}
+
+	/*
+	 * private static final void getSortedDataByInsertionSort(int l, int[] a, String
+	 * string) {
+	 * 
+	 * }
+	 */
+
+	private static void getSortedDataBySelectionSort(int l, int[] a, String type) {
+		for (int i = 0; i < a.length; i++) {
+			int currentIndex = i;
+			printValues(a, l, type);
+			printIndex(a, l, type);
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[j] >= a[j - 1] && a[currentIndex] >= a[j - 1]) {
+					currentIndex = j - 1;
+				}
+				if (j == a.length - 1) {
+					if (a[currentIndex] >= a[j] && (j) != currentIndex) {
+						currentIndex = j;
+					}
+					if (currentIndex != i)
+						swap(a, currentIndex, i);
+				}
+			}
+		}
+		printValues(a, l, type);
+	}
+
+	private static final void getSortedDataByMergeSort(int l, int[] a, String sortType) {
 
 	}
 
@@ -18,7 +54,7 @@ public class Main {
 	protected static final void getSortedDataByBubbleSort(final int l, final int[] a, final String sortType) {
 
 		for (int i = 0; i < l; i++) {
-			for (int j = -1; (++j < l - 1);) {
+			for (int j = 0; j < l - 1; j++) {
 				if (a[j] > a[j + 1]) {
 					a[j] += a[j + 1];
 					a[j + 1] = a[j] - a[j + 1];
@@ -37,36 +73,34 @@ public class Main {
 		int pivotIndex = l - 1;
 		printValues(a, l, type);
 		printIndex(a, l, type);
-		for (int i = lLimit; i < hLimit; ++i) {
-			if (a[i] < pivot) {
+		int i = lLimit;
+		final int currLen = a.length;
+		while (i < hLimit) {
+			if (pivotIndex == currLen / 2 && a[hLimit] > a[pivotIndex]) {
+				swap(a, hLimit, pivotIndex);
+				pivotIndex--;
+			} else if (a[i] < pivot) {
+				i++;
 				continue;
 			} else if (a[i] > pivot) {
-				// Swap the numbers that are on the wrong side of the pivot value
-				a[i] += a[hLimit];
-
-				a[hLimit] = a[i] - a[hLimit];
-				a[i] = a[i] - a[hLimit];
-				// Swap the pivot value with the newly swapped value.
-				System.out.println("Before Swap pivot");
-				printValues(a, l, type);
+				swap(a, i, hLimit);
 				if (a[hLimit] > a[pivotIndex]) {
-					a[hLimit] += a[pivotIndex];
-					a[pivotIndex] = a[hLimit] - a[pivotIndex];
-					a[hLimit] = a[hLimit] - a[pivotIndex];
+					swap(a, hLimit, pivotIndex);
 				}
-				System.out.println("After swap pivot");
-				printValues(a,l,type);
-				System.out.println(i+"\tPivotIndex"+pivotIndex+"\tHigherLimit"+hLimit);
 				pivotIndex = hLimit;
 				hLimit--;
 				i = lLimit;
-
 			}
 
 		}
-		System.out.println();
 		printValues(a, l, type);
 
+	}
+
+	private static final void swap(int[] a, int i, int uL) {
+		a[i] += a[uL];
+		a[uL] = a[i] - a[uL];
+		a[i] = a[i] - a[uL];
 	}
 
 	private static final void printValues(final int[] a, final int l, final String type) {
