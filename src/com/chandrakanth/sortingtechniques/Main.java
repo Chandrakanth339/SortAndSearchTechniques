@@ -25,18 +25,15 @@ public class Main {
 	private static void getSortedDataBySelectionSort(int l, int[] a, String type) {
 		for (int i = 0; i < a.length; i++) {
 			int currentIndex = i;
-			printValues(a, l, type);
-			printIndex(a, l, type);
 			for (int j = i + 1; j < a.length; j++) {
 				if (a[j] >= a[j - 1] && a[currentIndex] >= a[j - 1]) {
 					currentIndex = j - 1;
 				}
-				if (j == a.length - 1) {
-					if (a[currentIndex] >= a[j] && (j) != currentIndex) {
+				else if (j == a.length - 1 && a[currentIndex] >= a[j] && (j) != currentIndex) {
 						currentIndex = j;
-					}
-					if (currentIndex != i)
-						swap(a, currentIndex, i);
+				}
+				if(j == a.length - 1  && currentIndex != i) {
+					swap(a, currentIndex, i);					
 				}
 			}
 		}
