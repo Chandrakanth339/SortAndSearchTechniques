@@ -3,14 +3,15 @@ package com.chandrakanth.sortingtechniques;
 public class Main {
 
 	public static void main(String argz[]) {
-
+		
 		final int[] arr = getData();
 		final int l = arr.length;
+		int[] copyArray = new int[arr.length];
 		// getSortedDataByBubbleSort(l, arr, "BubbleSort");
-		// getSorteddataByQuickSort(l, getData(), "QuickSort");
+		 getSorteddataByQuickSort(l, getData(), "QuickSort");
 		// getSortedDataByMergeSort(l, getData(), "MergeSort");
 
-		getSortedDataBySelectionSort(l, getData(), "SelectionSort");
+//		getSortedDataBySelectionSort(l, getData(), "SelectionSort");
 		// getSortedDataByInsertionSort(l, getData(), "InsertionSort");
 
 	}
@@ -88,7 +89,6 @@ public class Main {
 				hLimit--;
 				i = lLimit;
 			}
-
 		}
 		printValues(a, l, type);
 
