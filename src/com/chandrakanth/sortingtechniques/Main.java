@@ -10,10 +10,8 @@ public class Main {
 		// getSortedDataByBubbleSort(l, arr, "BubbleSort");
 		 getSorteddataByQuickSort(l, getData(), "QuickSort");
 		// getSortedDataByMergeSort(l, getData(), "MergeSort");
-
-//		getSortedDataBySelectionSort(l, getData(), "SelectionSort");
+                //getSortedDataBySelectionSort(l, getData(), "SelectionSort");
 		// getSortedDataByInsertionSort(l, getData(), "InsertionSort");
-
 	}
 
 	/*
